@@ -72,3 +72,32 @@ app.use(express.static('example'));
 app.listen(3220, () => {
   console.log('Server running at http://localhost:3220');
 });
+```
+# 📘 Express Route Path Matching Examples
+
+This section demonstrates how different route path patterns in Express match URLs using special characters and regular expressions.
+
+---
+
+## 🔹 Pattern-Based Routes
+
+### ✅ Matches `/acd` and `/abcd`
+```js
+app.get('/ab?cd', function(req, res) {
+  res.send('Matched /acd or /abcd');
+});
+app.get('/ab+cd', function(req, res) {
+  res.send('Matched repeated b like abcd, abbbcd');
+});
+app.get('/ab*cd', function(req, res) {
+  res.send('Matched ab-anything-cd');
+});
+app.get('/ab(cd)?e', function(req, res) {
+  res.send('Matched /abe or /abcde');
+});
+app.get(/a/, function(req, res) {
+  res.send('Matched route containing letter "a"');
+});
+app.get(/.*fly$/, function(req, res) {
+  res.send('Matched routes ending with "fly"');
+});
