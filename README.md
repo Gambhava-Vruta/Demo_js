@@ -39,4 +39,36 @@ app.get('/good', (req, res) => {
 app.listen(3321, () => {
   console.log("Server running at http://localhost:3321");
 });
+```
 
+## 📄 other Example Code
+
+```js
+ const express = require('express');
+ const app = express();
+// This middleware runs for ALL HTTP methods on '/'
+ app.all('/', (req, res) => {
+   res.send(`Received a ${req.method} request`);
+ });
+```
+## 📂 Static Middleware (`express.static()`)
+
+`express.static()` is a built-in middleware function in Express used to serve static assets such as:
+
+- HTML files
+- CSS stylesheets
+- JavaScript files
+- Images
+- PDFs, and more
+
+It allows you to expose a folder in your project to be accessed directly by the browser.## 📄 Example Code
+
+```js
+const express = require('express');
+const app = express();
+
+app.use(express.static('example'));
+
+app.listen(3220, () => {
+  console.log('Server running at http://localhost:3220');
+});
